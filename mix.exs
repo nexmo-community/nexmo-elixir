@@ -7,6 +7,7 @@ defmodule Nexmo.MixProject do
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
+      test_coverage: [tool: ExCoveralls],
       deps: deps()
     ]
   end
@@ -26,7 +27,9 @@ defmodule Nexmo.MixProject do
       {:poison, "~> 4.0"},
       {:exjsx, "~> 4.0"},
       {:envy, "~> 1.1"},
-      {:bypass, "~> 1.0", only: :test}
+      {:bypass, "~> 1.0", only: :test},
+      {:mock, "~> 0.3.0", only: :test},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 end
