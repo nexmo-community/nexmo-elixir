@@ -9,6 +9,8 @@ This is a work in progress Elixir client library for Nexmo. Functionality will b
 
 ## Installation
 
+### Hex
+
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `nexmo` to your list of dependencies in `mix.exs`:
 
@@ -19,6 +21,17 @@ def deps do
   ]
 end
 ```
+
+### Environment Variables
+
+The client library requires environment variables to be supplied in order to enable its functionality. You can find a [sample .env file](/.env.sample) in the root directory of the project. You need to supply your API credentials and the host names for the API endpoints in the `.env` file.
+
+Your Nexmo API credentials:
+* `NEXMO_API_KEY`
+* `NEXMO_API_SECRET`
+
+API host names:
+* `SMS_API_ENDPOINT="https://rest.nexmo.com/sms/json"`
 
 # Usage
 
