@@ -46,6 +46,16 @@ Nexmo.Sms.send(YOUR_NUMBER, RECIPIENT_NUMBER, "Hello world")
 
 Docs: [https://developer.nexmo.com/api/sms#send-an-sms](https://developer.nexmo.com/api/sms?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#send-an-sms)
 
+## Account API
+
+### Get Balance
+
+```elixir
+Nexmo.Account.get_balance
+```
+
+Docs: [https://developer.nexmo.com/api/account#getAccountBalance](https://developer.nexmo.com/api/account#getAccountBalance?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#get-account-balance)
+
 # Testing
 
 The tests for Nexmo Elixir can be found in `/test/`. Each API service has its own testing suite and can be found in `/test/#{name_of_service}`, for example the SMS tests can be found in `/test/sms`. To run the testing suite execute `mix test` from the command line.
