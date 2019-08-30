@@ -32,6 +32,7 @@ Your Nexmo API credentials:
 
 API host names:
 * `SMS_API_ENDPOINT="https://rest.nexmo.com/sms/json"`
+* `ACCOUNT_API_ENDPOINT="https://rest.nexmo.com/account"`
 
 # Usage
 
@@ -44,6 +45,16 @@ Nexmo.Sms.send(YOUR_NUMBER, RECIPIENT_NUMBER, "Hello world")
 ```
 
 Docs: [https://developer.nexmo.com/api/sms#send-an-sms](https://developer.nexmo.com/api/sms?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#send-an-sms)
+
+## Account API
+
+### Get Balance
+
+```elixir
+Nexmo.Account.get_balance
+```
+
+Docs: [https://developer.nexmo.com/api/account#getAccountBalance](https://developer.nexmo.com/api/account#getAccountBalance?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#get-account-balance)
 
 # Testing
 
