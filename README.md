@@ -5,6 +5,7 @@
 
 This is a work in progress Elixir client library for Nexmo. Functionality will be added for each Nexmo API service. Currently, this library supports:
 
+* [Account API](#account-api)
 * [SMS API](#sms-api)
 
 ## Installation
@@ -36,16 +37,6 @@ API host names:
 
 # Usage
 
-## SMS API
-
-### Send an SMS
-
-```elixir
-Nexmo.Sms.send(YOUR_NUMBER, RECIPIENT_NUMBER, "Hello world")
-```
-
-Docs: [https://developer.nexmo.com/api/sms#send-an-sms](https://developer.nexmo.com/api/sms?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#send-an-sms)
-
 ## Account API
 
 ### Get Balance
@@ -55,6 +46,16 @@ Nexmo.Account.get_balance
 ```
 
 Docs: [https://developer.nexmo.com/api/account#getAccountBalance](https://developer.nexmo.com/api/account#getAccountBalance?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#get-account-balance)
+
+## SMS API
+
+### Send an SMS
+
+```elixir
+Nexmo.Sms.send(YOUR_NUMBER, RECIPIENT_NUMBER, "Hello world")
+```
+
+Docs: [https://developer.nexmo.com/api/sms#send-an-sms](https://developer.nexmo.com/api/sms?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#send-an-sms)
 
 # Testing
 
