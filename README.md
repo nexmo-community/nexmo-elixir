@@ -32,6 +32,7 @@ Your Nexmo API credentials:
 
 API host names:
 * `SMS_API_ENDPOINT="https://rest.nexmo.com/sms/json"`
+* `ACCOUNT_API_ENDPOINT="https://rest.nexmo.com/account"`
 
 # Usage
 

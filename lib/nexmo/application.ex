@@ -27,14 +27,14 @@ defmodule Nexmo.Application do
   def request(method, endpoint, body, headers) when method == :post and not is_nil(headers) do
     Nexmo.Application.post(endpoint, body, headers)
   end
-  def request(method, endpoint, body, headers) when method == :get and not is_nil(headers) do
-    Nexmo.Application.get(endpoint, body, headers)
+  def request(method, endpoint, params, headers) when method == :get and not is_nil(headers) do
+    Nexmo.Application.get(endpoint, headers, params)
   end
   def request(method, endpoint, body) when method == :post do
     Nexmo.Application.post(endpoint, JSX.encode!(body))
   end
-  def request(method, endpoint, body) when method == :get do
-    Nexmo.Application.get(endpoint, JSX.encode!(body))
+  def request(method, endpoint, params) when method == :get do
+    Nexmo.Application.get(endpoint, [], params: params)
   end
 
   def api_key do
