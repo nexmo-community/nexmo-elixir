@@ -1,6 +1,10 @@
 defmodule Nexmo.Account do
   use HTTPoison.Base
 
+  def process_response_body(body) do
+    JSX.decode!(body)
+  end
+
   def get_balance() do
     params = %{
       api_key: Nexmo.Application.api_key,

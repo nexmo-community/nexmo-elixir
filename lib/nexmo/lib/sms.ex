@@ -1,5 +1,9 @@
 defmodule Nexmo.Sms do
   use HTTPoison.Base
+  
+  def process_response_body(body) do
+    JSX.decode!(body)
+  end
 
   def send(from, to, text) do
     headers = [
