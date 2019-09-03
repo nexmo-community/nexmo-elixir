@@ -46,8 +46,49 @@ API host names:
 ```elixir
 Nexmo.Account.get_balance
 ```
-
 Docs: [https://developer.nexmo.com/api/account#getAccountBalance](https://developer.nexmo.com/api/account#getAccountBalance?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#get-account-balance)
+
+### Top Up Balance
+
+```elixir
+Nexmo.Account.top_up("transaction_reference")
+```
+Docs: [https://developer.nexmo.com/api/account#topUpAccountBalance](https://developer.nexmo.com/api/account#topUpAccountBalance?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#topUp-account-balance)
+
+### Change Account Settings
+
+```elixir
+Nexmo.Account.update(moCallBackUrl: "https://example.com/inbound", drCallBackUrl: "https://example.com/delivery")
+```
+Docs: [https://developer.nexmo.com/api/account#changeAccountSettings](https://developer.nexmo.com/api/account#changeAccountSettings?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#change-account-settings)
+
+### Retrieve API Secrets
+
+```elixir
+Nexmo.Account.list_secrets
+```
+Docs: [https://developer.nexmo.com/api/account#retrieveAPISecrets](https://developer.nexmo.com/api/account#retrieveAPISecrets?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#retrieve-api-secrets)
+
+### Create API Secret
+
+```elixir
+Nexmo.Account.create_secret(secret: "example-4PI-Secret")
+```
+Docs: [https://developer.nexmo.com/api/account#createAPISecret](https://developer.nexmo.com/api/account#createAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#create-api-secret)
+
+### Retrieve one API Secret
+
+```elixir
+Nexmo.Account.get_secret("secret_id")
+```
+Docs: [https://developer.nexmo.com/api/account#retrieveAPISecret](https://developer.nexmo.com/api/account#retrieveAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#retrieve-api-secret)
+
+### Revoke an API Secret
+
+```elixir
+Nexmo.Account.delete_secret("secret_id)
+```
+Docs: [https://developer.nexmo.com/api/account#revokeAPISecret](https://developer.nexmo.com/api/account#revokeAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#revoke-api-secret)
 
 ## SMS API
 
