@@ -1,4 +1,4 @@
-defmodule Nexmo.Account.ListSecretsTest do
+defmodule Nexmo.Account.CreateSecretTest do
   use ExUnit.Case
 
   setup do
@@ -53,10 +53,10 @@ defmodule Nexmo.Account.ListSecretsTest do
   } do
     Bypass.expect bypass, fn conn ->
       assert "/accounts/#{System.get_env("NEXMO_API_KEY")}/secrets" == conn.request_path
-      assert "GET" == conn.method
+      assert "POST" == conn.method
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end
-    response = Nexmo.Account.list_secrets
+    response = Nexmo.Account.create_secret(secret: "example-4PI-Secret")
     assert valid_response == elem(response, 1).body
   end
 end
