@@ -18,7 +18,7 @@ by adding `nexmo` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:nexmo, "~> 0.1.0"}
+    {:nexmo, "~> 0.2.0"}
   ]
 end
 ```
