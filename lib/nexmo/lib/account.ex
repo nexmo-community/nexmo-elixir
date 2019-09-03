@@ -46,4 +46,10 @@ defmodule Nexmo.Account do
     body = Enum.into(request, %{})
     Nexmo.Account.post("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Application.api_key}/secrets", Poison.encode!(body), headers)
   end
+
+  def get_secret(secret_id) do
+    credentials = "#{Nexmo.Application.api_key}:#{Nexmo.Application.api_secret}" |> Base.encode64()
+    headers = [{"Authorization", "Basic #{credentials}"}]
+    Nexmo.Account.get("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Application.api_key}/secrets/#{secret_id}", headers)  
+  end
 end
