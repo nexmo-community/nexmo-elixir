@@ -30,4 +30,32 @@ defmodule Nexmo.Account do
     body = Enum.into(request, %{})
     Nexmo.Account.post("#{System.get_env("ACCOUNT_API_ENDPOINT")}/settings", Poison.encode!(body), [], params: params)
   end
+
+  def list_secrets() do
+    credentials = "#{Nexmo.Application.api_key}:#{Nexmo.Application.api_secret}" |> Base.encode64()
+    headers = [{"Authorization", "Basic #{credentials}"}]
+    Nexmo.Account.get("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Application.api_key}/secrets", headers)  
+  end
+
+  def create_secret(request) do
+    credentials = "#{Nexmo.Application.api_key}:#{Nexmo.Application.api_secret}" |> Base.encode64()
+    headers = [
+      {"Content-Type", "application/json"},
+      {"Authorization", "Basic #{credentials}"}
+    ]
+    body = Enum.into(request, %{})
+    Nexmo.Account.post("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Application.api_key}/secrets", Poison.encode!(body), headers)
+  end
+
+  def get_secret(secret_id) do
+    credentials = "#{Nexmo.Application.api_key}:#{Nexmo.Application.api_secret}" |> Base.encode64()
+    headers = [{"Authorization", "Basic #{credentials}"}]
+    Nexmo.Account.get("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Application.api_key}/secrets/#{secret_id}", headers)  
+  end
+
+  def delete_secret(secret_id) do
+    credentials = "#{Nexmo.Application.api_key}:#{Nexmo.Application.api_secret}" |> Base.encode64()
+    headers = [{"Authorization", "Basic #{credentials}"}]
+    Nexmo.Account.delete("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Application.api_key}/secrets/#{secret_id}", headers)
+  end
 end

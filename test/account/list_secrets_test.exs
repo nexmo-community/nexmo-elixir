@@ -1,4 +1,4 @@
-defmodule Nexmo.Account.UpdateTest do
+defmodule Nexmo.Account.ListSecretsTest do
   use ExUnit.Case
 
   setup do
@@ -8,19 +8,28 @@ defmodule Nexmo.Account.UpdateTest do
     # setup test responses
     valid_response = 
       %{
-        "dr-callback-url" => "https://example.com/delivery",
-        "max-calls-per-second" => 30,
-        "max-inbound-request" => 30,
-        "max-outbound-request" => 30,
-        "mo-callback-url" => "https://example.com/inbound"
+        "_embedded" => %{
+          "secrets" => [
+            %{
+              "_links" => %{
+                "self" => %{
+                  "href" => "/accounts/a123456/secrets/123a-456b-789c-12345d"
+                }
+              },
+              "created_at" => "2019-01-01T06:06:06Z",
+              "id" => "123a-456b-789c-12345d"
+            }
+          ]
+        },
+        "_links" => %{"self" => %{"href" => "/accounts/a123456/secrets"}}
       }
 
     # setup bypass 
 
     bypass = Bypass.open()
-    orig_endpoint = System.get_env "ACCOUNT_API_ENDPOINT"
-    bypass_url = "http://localhost:#{bypass.port}/account"
-    System.put_env "ACCOUNT_API_ENDPOINT", bypass_url
+    orig_endpoint = System.get_env "SECRETS_API_ENDPOINT"
+    bypass_url = "http://localhost:#{bypass.port}/accounts"
+    System.put_env "SECRETS_API_ENDPOINT", bypass_url
     orig_api_key = System.get_env "NEXMO_API_KEY"
     System.put_env "NEXMO_API_KEY", api_key
     orig_api_secret = System.get_env "NEXMO_API_SECRET"
@@ -28,7 +37,7 @@ defmodule Nexmo.Account.UpdateTest do
     on_exit fn ->
       System.put_env "NEXMO_API_KEY", orig_api_key
       System.put_env "NEXMO_API_SECRET", orig_api_secret
-      System.put_env "ACCOUNT_API_ENDPOINT", orig_endpoint
+      System.put_env "SECRETS_API_ENDPOINT", orig_endpoint
     end
     {:ok, %{
       api_key: api_key,
@@ -43,12 +52,11 @@ defmodule Nexmo.Account.UpdateTest do
     valid_response: valid_response
   } do
     Bypass.expect bypass, fn conn ->
-      assert "/account/settings" == conn.request_path
-      assert "api_key=a123456&api_secret=b123456" == conn.query_string
-      assert "POST" == conn.method
+      assert "/accounts/#{System.get_env("NEXMO_API_KEY")}/secrets" == conn.request_path
+      assert "GET" == conn.method
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end
-    response = Nexmo.Account.update(moCallBackUrl: "https://example.com/inbound", drCallBackUrl: "https://example.com/delivery")
+    response = Nexmo.Account.list_secrets
     assert valid_response == elem(response, 1).body
   end
 end

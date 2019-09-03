@@ -18,7 +18,7 @@ by adding `nexmo` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:nexmo, "~> 0.1.0"}
+    {:nexmo, "~> 0.2.0"}
   ]
 end
 ```
@@ -34,6 +34,8 @@ Your Nexmo API credentials:
 API host names:
 * `SMS_API_ENDPOINT="https://rest.nexmo.com/sms/json"`
 * `ACCOUNT_API_ENDPOINT="https://rest.nexmo.com/account"`
+* `SECRETS_API_ENDPOINT="https://api.nexmo.com/accounts"`
+
 
 # Usage
 
