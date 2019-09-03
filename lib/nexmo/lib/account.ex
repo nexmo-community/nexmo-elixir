@@ -52,4 +52,10 @@ defmodule Nexmo.Account do
     headers = [{"Authorization", "Basic #{credentials}"}]
     Nexmo.Account.get("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Application.api_key}/secrets/#{secret_id}", headers)  
   end
+
+  def delete_secret(secret_id) do
+    credentials = "#{Nexmo.Application.api_key}:#{Nexmo.Application.api_secret}" |> Base.encode64()
+    headers = [{"Authorization", "Basic #{credentials}"}]
+    Nexmo.Account.delete("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Application.api_key}/secrets/#{secret_id}", headers)
+  end
 end
