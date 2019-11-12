@@ -20,7 +20,7 @@ defmodule Nexmo.MixProject do
 
   defp package() do
     [
-      name: "nexmo_elixir"
+      name: "nexmo_elixir",
       files: ~w(lib priv .formatter.exs mix.exs README* readme* LICENSE*
                 license* CHANGES* changelog* src),
       licenses: ["MIT"],
