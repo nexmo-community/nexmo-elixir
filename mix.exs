@@ -8,7 +8,23 @@ defmodule Nexmo.MixProject do
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
-      deps: deps()
+      deps: deps(),
+      homepage_url: "https://developer.nexmo.com",
+      source_url: "https://github.com/nexmo-community/nexmo-elixir"
+    ]
+  end
+
+  defp description() do
+    "Nexmo Client Library for Elixir"
+  end
+
+  defp package() do
+    [
+      name: "nexmo_elixir",
+      files: ~w(lib priv .formatter.exs mix.exs README* readme* LICENSE*
+                license* CHANGES* changelog* src),
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/nexmo-community/nexmo-elixir"}
     ]
   end
 
@@ -29,7 +45,8 @@ defmodule Nexmo.MixProject do
       {:envy, "~> 1.1"},
       {:bypass, "~> 1.0", only: :test},
       {:mock, "~> 0.3.0", only: :test},
-      {:excoveralls, "~> 0.10", only: :test}
+      {:excoveralls, "~> 0.10", only: :test},
+      {:ex_doc, "~> 0.21", only: :dev, runtime: false}
     ]
   end
 end
