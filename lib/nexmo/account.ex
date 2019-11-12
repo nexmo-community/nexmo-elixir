@@ -13,21 +13,15 @@ defmodule Nexmo.Account do
     Nexmo.Account.get("#{System.get_env("ACCOUNT_API_ENDPOINT")}/get-balance", [], params: params)
   end
 
-  def top_up(trx) do
-    params = [
-      api_key: Nexmo.Config.api_key,
-      api_secret: Nexmo.Config.api_secret
-    ]
-    body = Poison.encode!(%{trx: trx})
+  def top_up(params) do
+    params = Nexmo.Config.merge_credentials(params)
+    body = Poison.encode!(params)
     Nexmo.Account.post("#{System.get_env("ACCOUNT_API_ENDPOINT")}/top-up", body, [], params: params)
   end
 
-  def update(request) do
-    params = [
-      api_key: Nexmo.Config.api_key,
-      api_secret: Nexmo.Config.api_secret
-    ]
-    body = Enum.into(request, %{})
+  def update(params) do
+    params = Nexmo.Config.merge_credentials(params)
+    body = Enum.into(params, %{})
     Nexmo.Account.post("#{System.get_env("ACCOUNT_API_ENDPOINT")}/settings", Poison.encode!(body), [], params: params)
   end
 
@@ -47,15 +41,15 @@ defmodule Nexmo.Account do
     Nexmo.Account.post("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Config.api_key}/secrets", Poison.encode!(body), headers)
   end
 
-  def get_secret(secret_id) do
+  def get_secret(params) do
     credentials = "#{Nexmo.Config.api_key}:#{Nexmo.Config.api_secret}" |> Base.encode64()
     headers = [{"Authorization", "Basic #{credentials}"}]
-    Nexmo.Account.get("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Config.api_key}/secrets/#{secret_id}", headers)  
+    Nexmo.Account.get("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Config.api_key}/secrets/#{params[:secret_id]}", headers)  
   end
 
-  def delete_secret(secret_id) do
+  def delete_secret(params) do
     credentials = "#{Nexmo.Config.api_key}:#{Nexmo.Config.api_secret}" |> Base.encode64()
     headers = [{"Authorization", "Basic #{credentials}"}]
-    Nexmo.Account.delete("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Config.api_key}/secrets/#{secret_id}", headers)
+    Nexmo.Account.delete("#{System.get_env("SECRETS_API_ENDPOINT")}/#{Nexmo.Config.api_key}/secrets/#{params[:secret_id]}", headers)
   end
 end

@@ -56,7 +56,7 @@ defmodule Nexmo.Account.GetSecretTest do
       assert "GET" == conn.method
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end
-    response = Nexmo.Account.get_secret("123a-456b-789c-12345d")
+    response = Nexmo.Account.get_secret(secret_id: "123a-456b-789c-12345d")
     assert valid_response == elem(response, 1).body
   end
 end

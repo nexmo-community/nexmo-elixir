@@ -40,7 +40,7 @@ defmodule Nexmo.Account.DeleteSecretTest do
       assert "DELETE" == conn.method
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end
-    response = Nexmo.Account.delete_secret("123a-456b-789c-12345d")
+    response = Nexmo.Account.delete_secret(secret_id: "123a-456b-789c-12345d")
     assert valid_response == elem(response, 1).body
   end
 end

@@ -37,11 +37,11 @@ defmodule Nexmo.Account.TopUpTest do
   } do
     Bypass.expect bypass, fn conn ->
       assert "/account/top-up" == conn.request_path
-      assert "api_key=a123456&api_secret=b123456" == conn.query_string
+      assert "api_key=a123456&api_secret=b123456&trx=123" == conn.query_string
       assert "POST" == conn.method
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end
-    response = Nexmo.Account.top_up(123)
+    response = Nexmo.Account.top_up(trx: "123")
     assert valid_response == elem(response, 1).body
   end
 end

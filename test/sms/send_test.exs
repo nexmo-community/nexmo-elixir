@@ -66,7 +66,7 @@ defmodule Nexmo.Sms.SendTest do
       assert {"content-type", "application/x-www-form-urlencoded"} in conn.req_headers
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end
-    response = Nexmo.Sms.send(from, to, text)
+    response = Nexmo.Sms.send(from: from, to: to, text: text)
     assert valid_response == elem(response, 1).body
   end
 end
