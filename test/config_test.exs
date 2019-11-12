@@ -26,8 +26,9 @@ defmodule NexmoConfigTest do
 
   test "merge credentials function combines user input with Nexmo credentials" do
     input = %{a: "123", b: "456"}
+    expected_result = %{a: "123", b: "456", api_key: "a123456", api_secret: "b123456"}
     result = Nexmo.Config.merge_credentials(input)
     
-    assert result == %{a: "123", b: "456", api_key: "a123456", api_secret: "b123456"}
+    assert result == expected_result
   end
 end
