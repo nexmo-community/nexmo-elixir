@@ -44,7 +44,7 @@ defmodule Nexmo.Account.UpdateTest do
   } do
     Bypass.expect bypass, fn conn ->
       assert "/account/settings" == conn.request_path
-      assert "api_key=a123456&api_secret=b123456" == conn.query_string
+      assert "api_key=a123456&api_secret=b123456&drCallBackUrl=https%3A%2F%2Fexample.com%2Fdelivery&moCallBackUrl=https%3A%2F%2Fexample.com%2Finbound" == conn.query_string
       assert "POST" == conn.method
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end

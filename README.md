@@ -52,7 +52,7 @@ Docs: [https://developer.nexmo.com/api/account#getAccountBalance](https://develo
 ### Top Up Balance
 
 ```elixir
-Nexmo.Account.top_up("transaction_reference")
+Nexmo.Account.top_up(trx: "transaction_reference")
 ```
 Docs: [https://developer.nexmo.com/api/account#topUpAccountBalance](https://developer.nexmo.com/api/account#topUpAccountBalance?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#topUp-account-balance)
 
@@ -80,14 +80,14 @@ Docs: [https://developer.nexmo.com/api/account#createAPISecret](https://develope
 ### Retrieve one API Secret
 
 ```elixir
-Nexmo.Account.get_secret("secret_id")
+Nexmo.Account.get_secret(secret_id: "secret_id")
 ```
 Docs: [https://developer.nexmo.com/api/account#retrieveAPISecret](https://developer.nexmo.com/api/account#retrieveAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#retrieve-api-secret)
 
 ### Revoke an API Secret
 
 ```elixir
-Nexmo.Account.delete_secret("secret_id")
+Nexmo.Account.delete_secret(secret_id: "secret_id")
 ```
 Docs: [https://developer.nexmo.com/api/account#revokeAPISecret](https://developer.nexmo.com/api/account#revokeAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#revoke-api-secret)
 
@@ -129,7 +129,11 @@ Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightAsync](htt
 ### Send an SMS
 
 ```elixir
-Nexmo.Sms.send(YOUR_NUMBER, RECIPIENT_NUMBER, "Hello world")
+Nexmo.Sms.send(
+  from: YOUR_NUMBER, 
+  to: RECIPIENT_NUMBER, 
+  text: "Hello world
+)
 ```
 
 Docs: [https://developer.nexmo.com/api/sms#send-an-sms](https://developer.nexmo.com/api/sms?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#send-an-sms)

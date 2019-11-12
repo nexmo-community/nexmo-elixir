@@ -56,7 +56,7 @@ defmodule Nexmo.Account.CreateSecretTest do
       assert "POST" == conn.method
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end
-    response = Nexmo.Account.create_secret(secret: "example-4PI-Secret")
+    response = Nexmo.Account.create_secret(secret_id: "example-4PI-Secret")
     assert valid_response == elem(response, 1).body
   end
 end
