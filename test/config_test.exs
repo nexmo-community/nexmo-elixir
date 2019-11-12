@@ -23,4 +23,11 @@ defmodule NexmoConfigTest do
   test "api_secret function returns correct API secret" do
     assert Config.api_secret == "b123456"
   end
+
+  test "merge credentials function combines user input with Nexmo credentials" do
+    input = %{a: "123", b: "456"}
+    result = Nexmo.Config.merge_credentials(input)
+    
+    assert result == %{a: "123", b: "456", api_key: "a123456", api_secret: "b123456"}
+  end
 end
