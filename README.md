@@ -33,10 +33,10 @@ Your Nexmo API credentials:
 * `NEXMO_API_SECRET`
 
 API host names:
-* `SMS_API_ENDPOINT="https://rest.nexmo.com/sms/json"`
 * `ACCOUNT_API_ENDPOINT="https://rest.nexmo.com/account"`
+* `NUMBER_INSIGHT_API_ENDPOINT="https://api.nexmo.com/ni"`
 * `SECRETS_API_ENDPOINT="https://api.nexmo.com/accounts"`
-
+* `SMS_API_ENDPOINT="https://rest.nexmo.com/sms/json"`
 
 # Usage
 
