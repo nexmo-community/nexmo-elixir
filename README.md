@@ -87,7 +87,7 @@ Docs: [https://developer.nexmo.com/api/account#retrieveAPISecret](https://develo
 ### Revoke an API Secret
 
 ```elixir
-Nexmo.Account.delete_secret("secret_id)
+Nexmo.Account.delete_secret("secret_id")
 ```
 Docs: [https://developer.nexmo.com/api/account#revokeAPISecret](https://developer.nexmo.com/api/account#revokeAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#revoke-api-secret)
 
