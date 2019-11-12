@@ -7,56 +7,54 @@ defmodule Nexmo.NumberInsight.AdvancedAsyncTest do
 
     # setup test responses
     valid_response = %{
-      {
-        "status": 0,
-        "status_message": "Success",
-        "request_id": "aaaaaaaa-bbbb-cccc-dddd-0123456789ab",
-        "international_format_number": "447700900000",
-        "national_format_number": "07700 900000",
-        "country_code": "GB",
-        "country_code_iso3": "GBR",
-        "country_name": "United Kingdom",
-        "country_prefix": "44",
-        "request_price": "0.04000000",
-        "refund_price": "0.01500000",
-        "remaining_balance": "1.23456789",
-        "current_carrier": {
-          "network_code": "12345",
-          "name": "Acme Inc",
-          "country": "GB",
-          "network_type": "mobile"
-        },
-        "original_carrier": {
-          "network_code": "12345",
-          "name": "Acme Inc",
-          "country": "GB",
-          "network_type": "mobile"
-        },
-        "ported": "not_ported",
-        "roaming": {
-          "status": "roaming",
-          "roaming_country_code": "US",
-          "roaming_network_code": 12345,
-          "roaming_network_name": "Acme Inc"
-        },
-        "caller_identity": {
-          "caller_type": "consumer",
-          "caller_name": "John Smith",
-          "first_name": "John",
-          "last_name": "Smith"
-        },
-        "lookup_outcome": "0",
-        "lookup_outcome_message": "Success",
-        "valid_number": "valid",
-        "reachable": "reachable",
-        "ip": {
-          "address": "123.0.0.255",
-          "ip_match_level": "country",
-          "ip_country": "GB",
-          "ip_city": "London"
-        },
-        "ip_warnings": "unknown"
-      }
+      "status" => 0,
+      "status_message" => "Success",
+      "request_id" => "aaaaaaaa-bbbb-cccc-dddd-0123456789ab",
+      "international_format_number" => "447700900000",
+      "national_format_number" => "07700 900000",
+      "country_code" => "GB",
+      "country_code_iso3" => "GBR",
+      "country_name" => "United Kingdom",
+      "country_prefix" => "44",
+      "request_price" => "0.04000000",
+      "refund_price" => "0.01500000",
+      "remaining_balance" => "1.23456789",
+      "current_carrier" => %{
+        "network_code" => "12345",
+        "name" => "Acme Inc",
+        "country" => "GB",
+        "network_type" => "mobile"
+      },
+      "original_carrier" => %{
+        "network_code" => "12345",
+        "name" => "Acme Inc",
+        "country" => "GB",
+        "network_type" => "mobile"
+      },
+      "ported" => "not_ported",
+      "roaming" => %{
+        "status" => "roaming",
+        "roaming_country_code" => "US",
+        "roaming_network_code" => 12345,
+        "roaming_network_name" => "Acme Inc"
+      },
+      "caller_identity" => %{
+        "caller_type" => "consumer",
+        "caller_name" => "John Smith",
+        "first_name" => "John",
+        "last_name" => "Smith"
+      },
+      "lookup_outcome" => "0",
+      "lookup_outcome_message" => "Success",
+      "valid_number" => "valid",
+      "reachable" => "reachable",
+      "ip" => %{
+        "address" => "123.0.0.255",
+        "ip_match_level" => "country",
+        "ip_country" => "GB",
+        "ip_city" => "London"
+      },
+      "ip_warnings" => "unknown"
     }
 
     # setup bypass 
@@ -87,12 +85,15 @@ defmodule Nexmo.NumberInsight.AdvancedAsyncTest do
     valid_response: valid_response
   } do
     Bypass.expect bypass, fn conn ->
-      assert "/advanced/json" == conn.request_path
-      assert "api_key=a123456&api_secret=b123456&number=447700900000" == conn.query_string
+      assert "/advanced/async/json" == conn.request_path
+      assert "api_key=a123456&api_secret=b123456&callback=https%3A%2F%2Fexample.com%2Fcallback&number=447700900000" == conn.query_string
       assert "GET" == conn.method
       Plug.Conn.send_resp(conn, 200, Poison.encode!(valid_response))
     end
-    response = Nexmo.NumberInsight.advanced_async(%{number: "447700900000"})
+    response = Nexmo.NumberInsight.advanced_async(
+      number: "447700900000",
+      callback: "https://example.com/callback"
+      )
     assert valid_response == elem(response, 1).body
   end
 end
