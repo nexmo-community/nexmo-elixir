@@ -5,3 +5,8 @@ script:
   - MIX_ENV=test mix do compile --warnings-as-errors, coveralls.json
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+env:
+  - SMS_API_ENDPOINT="https://rest.nexmo.com/sms/json"
+  - ACCOUNT_API_ENDPOINT="https://rest.nexmo.com/account"
+  - SECRETS_API_ENDPOINT="https://api.nexmo.com/accounts"
+  - NUMBER_INSIGHT_API_ENDPOINT="https://api.nexmo.com/ni"
