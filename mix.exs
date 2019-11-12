@@ -16,7 +16,7 @@ defmodule Nexmo.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Nexmo.Application, []}
+      mod: {Nexmo.Config, []}
     ]
   end
 
