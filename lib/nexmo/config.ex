@@ -1,4 +1,4 @@
-defmodule Nexmo.Application do
+defmodule Nexmo.Config do
   @moduledoc false
   use Application
 
@@ -26,5 +26,22 @@ defmodule Nexmo.Application do
   def api_secret do
     Application.get_env(:nexmo, :api_secret) ||
       System.get_env("NEXMO_API_SECRET")
+  end
+
+  def merge_credentials(params) do
+    params = convert_to_map(params)
+    Map.merge(params, %{
+      api_key: Nexmo.Config.api_key,
+      api_secret: Nexmo.Config.api_secret
+    })
+  end
+
+  def convert_to_map(params) do
+    for {key, val} <- params, into: %{} do
+      cond do
+        is_atom(key) -> {key, val}
+        true -> {String.to_atom(key), val}
+      end
+    end
   end
 end

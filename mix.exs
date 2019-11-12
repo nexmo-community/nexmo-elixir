@@ -16,14 +16,14 @@ defmodule Nexmo.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Nexmo.Application, []}
+      mod: {Nexmo.Config, []}
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.5"},
+      {:httpoison, "~> 1.6"},
       {:poison, "~> 4.0"},
       {:exjsx, "~> 4.0"},
       {:envy, "~> 1.1"},

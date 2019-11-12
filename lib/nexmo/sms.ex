@@ -11,8 +11,8 @@ defmodule Nexmo.Sms do
       {"Accept", "text/html"}
     ]
     params = [
-      api_key: Nexmo.Application.api_key,
-      api_secret: Nexmo.Application.api_secret,
+      api_key: Nexmo.Config.api_key,
+      api_secret: Nexmo.Config.api_secret,
       from: from,
       to: to,
       text: text

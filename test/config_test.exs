@@ -1,7 +1,7 @@
-defmodule NexmoApplicationTest do
+defmodule NexmoConfigTest do
   use ExUnit.Case
 
-  alias Nexmo.Application
+  alias Nexmo.Config
 
   setup do
     api_key = "a123456"
@@ -17,10 +17,18 @@ defmodule NexmoApplicationTest do
   end
 
   test "api_key function returns correct API key" do
-    assert Application.api_key == "a123456"
+    assert Config.api_key == "a123456"
   end
 
   test "api_secret function returns correct API secret" do
-    assert Application.api_secret == "b123456"
+    assert Config.api_secret == "b123456"
+  end
+
+  test "merge credentials function combines user input with Nexmo credentials" do
+    input = %{a: "123", b: "456"}
+    expected_result = %{a: "123", b: "456", api_key: "a123456", api_secret: "b123456"}
+    result = Nexmo.Config.merge_credentials(input)
+    
+    assert result == expected_result
   end
 end
