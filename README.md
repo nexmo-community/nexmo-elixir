@@ -6,6 +6,7 @@
 This is a work in progress Elixir client library for Nexmo. Functionality will be added for each Nexmo API service. Currently, this library supports:
 
 * [Account API](#account-api)
+* [Number Insight API](#number-insight-api)
 * [SMS API](#sms-api)
 
 ## Installation
@@ -89,6 +90,39 @@ Docs: [https://developer.nexmo.com/api/account#retrieveAPISecret](https://develo
 Nexmo.Account.delete_secret("secret_id)
 ```
 Docs: [https://developer.nexmo.com/api/account#revokeAPISecret](https://developer.nexmo.com/api/account#revokeAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#revoke-api-secret)
+
+## Number Insight API
+
+### Basic Number Insight
+
+```elixir
+Nexmo.NumberInsight.basic(number: "447700900000")
+```
+Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightBasic](https://developer.nexmo.com/api/number-insight#getNumberInsightBasic?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#getNumberInsightBasic)
+
+### Standard Number Insight
+
+```elixir
+Nexmo.NumberInsight.standard(number: "447700900000")
+```
+Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightStandard](https://developer.nexmo.com/api/number-insight#getNumberInsightStandard?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#getNumberInsightStandard)
+
+### Advanced Number Insight
+
+```elixir
+Nexmo.NumberInsight.advanced(number: "447700900000")
+```
+Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightAdvanced](https://developer.nexmo.com/api/number-insight#getNumberInsightAdvanced?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#getNumberInsightAdvanced)
+
+### Advanced Number Insight Async
+
+```elixir
+Nexmo.NumberInsight.advanced_async(
+  number: "447700900000", 
+  callback: "https://example.com/callback"
+)
+```
+Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightAsync](https://developer.nexmo.com/api/number-insight#getNumberInsightAsync?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#getNumberInsightAsync)
 
 ## SMS API
 
