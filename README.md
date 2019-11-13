@@ -3,23 +3,25 @@
 [![Build Status](https://travis-ci.org/nexmo-community/nexmo-elixir.svg?branch=master)](https://travis-ci.org/nexmo-community/nexmo-elixir)
  [![codecov](https://codecov.io/gh/nexmo-community/nexmo-elixir/branch/master/graph/badge.svg)](https://codecov.io/gh/nexmo-community/nexmo-elixir)
 
-This is a work in progress Elixir client library for Nexmo. Functionality will be added for each Nexmo API service. Currently, this library supports:
+This is a work in progress Elixir client library for Nexmo. Functionality will be added for each Nexmo API service. Currently, this library supports the Account, Number Insight and SMS Nexmo APIs.
 
-* [Account API](#account-api)
-* [Number Insight API](#number-insight-api)
-* [SMS API](#sms-api)
+* [Installation](#installation)
+  * [Hex](#hex)
+  * [Environment Variables](#environment-variables)
+* [Documentation](#documentation)
+* [Testing](#testing)
+* [License](#license)
 
 ## Installation
 
 ### Hex
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `nexmo` to your list of dependencies in `mix.exs`:
+The [Hex package](https://hex.pm/packages/nexmo_elixir) can be installed by adding `nexmo` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:nexmo, "~> 0.3.0"}
+    {:nexmo, "~> 0.3.0", hex: :nexmo_elixir}
   ]
 end
 ```
@@ -38,105 +40,10 @@ API host names:
 * `SECRETS_API_ENDPOINT="https://api.nexmo.com/accounts"`
 * `SMS_API_ENDPOINT="https://rest.nexmo.com/sms/json"`
 
-# Usage
+# Documentation
 
-## Account API
-
-### Get Balance
-
-```elixir
-Nexmo.Account.get_balance
-```
-Docs: [https://developer.nexmo.com/api/account#getAccountBalance](https://developer.nexmo.com/api/account#getAccountBalance?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#get-account-balance)
-
-### Top Up Balance
-
-```elixir
-Nexmo.Account.top_up(trx: "transaction_reference")
-```
-Docs: [https://developer.nexmo.com/api/account#topUpAccountBalance](https://developer.nexmo.com/api/account#topUpAccountBalance?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#topUp-account-balance)
-
-### Change Account Settings
-
-```elixir
-Nexmo.Account.update(moCallBackUrl: "https://example.com/inbound", drCallBackUrl: "https://example.com/delivery")
-```
-Docs: [https://developer.nexmo.com/api/account#changeAccountSettings](https://developer.nexmo.com/api/account#changeAccountSettings?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#change-account-settings)
-
-### Retrieve API Secrets
-
-```elixir
-Nexmo.Account.list_secrets
-```
-Docs: [https://developer.nexmo.com/api/account#retrieveAPISecrets](https://developer.nexmo.com/api/account#retrieveAPISecrets?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#retrieve-api-secrets)
-
-### Create API Secret
-
-```elixir
-Nexmo.Account.create_secret(secret: "example-4PI-Secret")
-```
-Docs: [https://developer.nexmo.com/api/account#createAPISecret](https://developer.nexmo.com/api/account#createAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#create-api-secret)
-
-### Retrieve one API Secret
-
-```elixir
-Nexmo.Account.get_secret(secret_id: "secret_id")
-```
-Docs: [https://developer.nexmo.com/api/account#retrieveAPISecret](https://developer.nexmo.com/api/account#retrieveAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#retrieve-api-secret)
-
-### Revoke an API Secret
-
-```elixir
-Nexmo.Account.delete_secret(secret_id: "secret_id")
-```
-Docs: [https://developer.nexmo.com/api/account#revokeAPISecret](https://developer.nexmo.com/api/account#revokeAPISecret?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#revoke-api-secret)
-
-## Number Insight API
-
-### Basic Number Insight
-
-```elixir
-Nexmo.NumberInsight.basic(number: "447700900000")
-```
-Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightBasic](https://developer.nexmo.com/api/number-insight#getNumberInsightBasic?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#getNumberInsightBasic)
-
-### Standard Number Insight
-
-```elixir
-Nexmo.NumberInsight.standard(number: "447700900000")
-```
-Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightStandard](https://developer.nexmo.com/api/number-insight#getNumberInsightStandard?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#getNumberInsightStandard)
-
-### Advanced Number Insight
-
-```elixir
-Nexmo.NumberInsight.advanced(number: "447700900000")
-```
-Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightAdvanced](https://developer.nexmo.com/api/number-insight#getNumberInsightAdvanced?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#getNumberInsightAdvanced)
-
-### Advanced Number Insight Async
-
-```elixir
-Nexmo.NumberInsight.advanced_async(
-  number: "447700900000", 
-  callback: "https://example.com/callback"
-)
-```
-Docs: [https://developer.nexmo.com/api/number-insight#getNumberInsightAsync](https://developer.nexmo.com/api/number-insight#getNumberInsightAsync?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#getNumberInsightAsync)
-
-## SMS API
-
-### Send an SMS
-
-```elixir
-Nexmo.Sms.send(
-  from: YOUR_NUMBER, 
-  to: RECIPIENT_NUMBER, 
-  text: "Hello world
-)
-```
-
-Docs: [https://developer.nexmo.com/api/sms#send-an-sms](https://developer.nexmo.com/api/sms?utm_source=DEV_REL&utm_medium=github&utm_campaign=elixir-client-library#send-an-sms)
+* Nexmo Elixir documentation: [https://hexdocs.pm/nexmo_elixir/api-reference.html](https://hexdocs.pm/nexmo_elixir/api-reference.html)
+* Nexmo API reference: [https://developer.nexmo.com/api](https://developer.nexmo.com/api)
 
 # Testing
 
