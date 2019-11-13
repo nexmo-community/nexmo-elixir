@@ -6,6 +6,8 @@ defmodule Nexmo.MixProject do
       app: :nexmo,
       version: "0.3.0",
       elixir: "~> 1.8",
+      description: description(),
+      package: package(),
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
       deps: deps(),
@@ -21,8 +23,8 @@ defmodule Nexmo.MixProject do
   defp package() do
     [
       name: "nexmo_elixir",
-      files: ~w(lib priv .formatter.exs mix.exs README* readme* LICENSE*
-                license* CHANGES* changelog* src),
+      files: ~w(lib .formatter.exs mix.exs README* README* LICENSE*
+                CHANGES* .env.sample),
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/nexmo-community/nexmo-elixir"}
     ]
