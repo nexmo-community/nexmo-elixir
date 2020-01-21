@@ -101,7 +101,7 @@ defmodule Nexmo.Account do
   def create_secret(request) do
     credentials = "#{Nexmo.Config.api_key}:#{Nexmo.Config.api_secret}" |> Base.encode64()
     headers = [
-      {"Content-Type", "Config/json"},
+      {"Content-Type", "Application/json"},
       {"Authorization", "Basic #{credentials}"}
     ]
     body = Enum.into(request, %{})
