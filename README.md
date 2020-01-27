@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/nexmo-community/nexmo-elixir.svg?branch=master)](https://travis-ci.org/nexmo-community/nexmo-elixir)
  [![codecov](https://codecov.io/gh/nexmo-community/nexmo-elixir/branch/master/graph/badge.svg)](https://codecov.io/gh/nexmo-community/nexmo-elixir)
 
-This is a work in progress Elixir client library for Nexmo. Functionality will be added for each Nexmo API service. Currently, this library supports the Account, Number Insight and SMS Nexmo APIs.
+This is a work in progress Elixir client library for Nexmo. Functionality will be added for each Nexmo API service. Currently, this library supports the Account, Applications, Number Insight and SMS Nexmo APIs.
 
 * [Installation](#installation)
   * [Hex](#hex)
@@ -21,7 +21,7 @@ The [Hex package](https://hex.pm/packages/nexmo_elixir) can be installed by addi
 ```elixir
 def deps do
   [
-    {:nexmo, "~> 0.3.0", hex: :nexmo_elixir}
+    {:nexmo, "~> 0.4.0", hex: :nexmo_elixir}
   ]
 end
 ```

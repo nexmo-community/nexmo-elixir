@@ -1,3 +1,7 @@
+# 0.4.0
+
+* Add Applications API functionality
+
 # 0.3.0
 
 * Add Number Insight API functionality
