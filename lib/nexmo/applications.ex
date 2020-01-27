@@ -33,7 +33,7 @@ defmodule Nexmo.Applications do
       {"Authorization", "Basic #{credentials}"}
     ]
     body = Enum.into(params, %{})
-    Nexmo.Account.post("#{System.get_env("APPLICATIONS_API_ENDPOINT")}", Poison.encode!(body), headers)
+    Nexmo.Applications.post("#{System.get_env("APPLICATIONS_API_ENDPOINT")}", Poison.encode!(body), headers)
   end
 
   @doc """
@@ -51,7 +51,7 @@ defmodule Nexmo.Applications do
   def list() do
     credentials = "#{Nexmo.Config.api_key}:#{Nexmo.Config.api_secret}" |> Base.encode64()
     headers = [{"Authorization", "Basic #{credentials}"}]
-    Nexmo.Account.get("#{System.get_env("APPLICATIONS_API_ENDPOINT")}", headers)  
+    Nexmo.Applications.get("#{System.get_env("APPLICATIONS_API_ENDPOINT")}", headers)  
   end
 
   @doc """
@@ -69,7 +69,7 @@ defmodule Nexmo.Applications do
   def get(params) do
     credentials = "#{Nexmo.Config.api_key}:#{Nexmo.Config.api_secret}" |> Base.encode64()
     headers = [{"Authorization", "Basic #{credentials}"}]
-    Nexmo.Account.get("#{System.get_env("APPLICATIONS_API_ENDPOINT")}/#{params[:application_id]}", headers)  
+    Nexmo.Applications.get("#{System.get_env("APPLICATIONS_API_ENDPOINT")}/#{params[:application_id]}", headers)  
   end
 
   @doc """
@@ -90,7 +90,7 @@ defmodule Nexmo.Applications do
   def update(params) do
     params = Nexmo.Config.merge_credentials(params)
     body = Enum.into(params, %{})
-    Nexmo.Account.post("#{System.get_env("APPLICATIONS_API_ENDPOINT")}/#{params[:application_id]}", Poison.encode!(body), [], params: params)
+    Nexmo.Applications.post("#{System.get_env("APPLICATIONS_API_ENDPOINT")}/#{params[:application_id]}", Poison.encode!(body), [], params: params)
   end
 
   @doc """
