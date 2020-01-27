@@ -71,7 +71,7 @@ defmodule Nexmo.Config do
   end
 
   @doc """
-  `Nexmo.Config.convert_to_maap/1` takes the user inputted parameters and converts them into a map.
+  `Nexmo.Config.convert_to_map/1` takes the user inputted parameters and converts them into a map.
 
   ## Examples
 
