@@ -1,6 +1,6 @@
 # Nexmo Elixir Client Library
 
-[![Build Status](https://travis-ci.org/nexmo-community/nexmo-elixir.svg?branch=master)](https://travis-ci.org/nexmo-community/nexmo-elixir)
+[![Build Status](https://travis-ci.org/nexmo-community/nexmo-elixir.svg?branch=main)](https://travis-ci.org/nexmo-community/nexmo-elixir)
  [![codecov](https://codecov.io/gh/nexmo-community/nexmo-elixir/branch/master/graph/badge.svg)](https://codecov.io/gh/nexmo-community/nexmo-elixir)
 
 This is a work in progress Elixir client library for Nexmo. Functionality will be added for each Nexmo API service. Currently, this library supports the Account, Applications, Number Insight and SMS Nexmo APIs.
